@@ -4,8 +4,7 @@ import "./index.scss";
 
 @component({ template: require("./index.html") })
 export default class Welcome extends View {
-  
   protected mounted() {
-    console.log("mounted");
+    // console.log("mounted");
   }
 }

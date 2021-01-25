@@ -14,14 +14,8 @@
 
 .v-welcome
 {
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    @include size();
     background: linear-gradient(to bottom, #68EACC 0%, #497BE8 100%);
-    
     &-content
     {
         position: absolute;

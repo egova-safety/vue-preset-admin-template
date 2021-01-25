@@ -1,4 +1,3 @@
 import PagePath from "./page-path";
-export {
-    PagePath
-};
+import UserInfo from "./user-info";
+export { PagePath, UserInfo };

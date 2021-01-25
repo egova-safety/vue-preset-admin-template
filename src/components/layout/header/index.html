@@ -1,0 +1,11 @@
+<header class="u-header">
+    <nav class="center">
+        <div class="menus">
+            <div class="router-link-content" v-for="(item,index) in  navs">
+                <a :class="{active: item.active}" @click="onRoute(item)">{{item.title}}</a>
+            </div>
+            <div v-if="navs.length" class="link-bar" :style="'transform: translateX('+ activedHeadeMenuIndex*1.5 +'rem);'"></div>
+        </div>
+    </nav>
+    <u-setting></u-setting>
+</header>

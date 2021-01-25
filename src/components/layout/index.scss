@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.v-layout-wrapper {
+    @include size();
+    position: relative;
+    /*背景*/
+    background-color: var(--background-color-4, #f7f7f7);
+    /*字体颜色*/
+    color: var(--text-color, unset);
+    @include transition-color();
+    @include flex(column, flex-start, flex-start);
+    .u-header {
+        z-index: 1;
+    }
+    > .main-content {
+        flex: 1;
+        @include size();
+        overflow: hidden;
+    }
+}

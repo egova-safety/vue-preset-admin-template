@@ -1,6 +1,7 @@
 import flagwind from "@egova/flagwind-core";
 import { ApplicationContext } from "@/application";
-import axios, {  } from "axios";
+import { commonSetting } from "@/settings";
+import axios from "axios";
 /**
  * 业务服务基类。
  * @abstract
@@ -8,8 +9,12 @@ import axios, {  } from "axios";
  * @version 1.0.0
  */
 export default abstract class ServiceBase {
+    public securityServer = commonSetting.securityServer;
+    public server = commonSetting.assetServer;
+    public adminServer = commonSetting.adminServer;
+    public establishServer = commonSetting.establishServer;
     protected url(url: string): string {
-        return url;
+        return commonSetting.baseUrl.replace(/\/$/, "") + "/" + url.replace(/^\//, "");
     }
 
     /**

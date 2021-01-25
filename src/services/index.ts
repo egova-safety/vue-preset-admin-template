@@ -1,6 +1,4 @@
-                            // 公共服务
+// 公共服务
 import ServiceBase from "./service-base";
-
-export {
-    ServiceBase
-};
+import CommonService from "./common-service";
+export { ServiceBase, CommonService };

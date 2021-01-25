@@ -1,5 +1,6 @@
+const pageConfig = require("./page.config");
 const path = require('path');
-
+const isProd = process.env.NODE_ENV === "production";
 module.exports = {
     //基本路径
     publicPath: './',
@@ -10,7 +11,7 @@ module.exports = {
     //放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。
     assetsDir: 'static',
     //以多页模式构建应用程序。
-    pages: undefined,
+    pages: pageConfig.pages,
     //是否使用包含运行时编译器的 Vue 构建版本
     runtimeCompiler: true,
     //是否为 Babel 或 TypeScript 使用 thread-loader。该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建，在适当的时候开启几个子进程去并发的执行压缩
@@ -45,6 +46,8 @@ module.exports = {
             };
             return args;
         });
+        
+        pageConfig.plugin(config);
     },
     //调整 webpack 配置 https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
     configureWebpack: config => {
@@ -55,7 +58,7 @@ module.exports = {
         // // 启用 CSS modules
         // requireModuleExtension: false,
         // 是否使用css分离插件
-        extract: true,
+        extract: isProd,
         // 开启 CSS source maps，一般不建议开启
         sourceMap: false,
         // css预设器配置项
@@ -77,7 +80,7 @@ module.exports = {
         port: 8000, // 端口号
         https: false, // https:{type:Boolean}
         open: true, //配置自动启动浏览器  http://172.16.1.12:7071/rest/mcdPhoneBar/
-        hotOnly: true, // 热更新
+        hot: true, // 热更新
         // proxy: 'http://localhost:8000'   // 配置跨域处理,只有一个代理
     },
 

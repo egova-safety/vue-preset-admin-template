@@ -1,0 +1,19 @@
+.page-menu-container {
+    flex: 1;
+    $background-shadow-color: var(--box-shadow-color);
+    @include size;
+    @include flex(row, flex-start, flex-start);
+    position: relative;
+    > aside.side-menu-container {
+        height: 100%;
+        overflow-y: auto;
+        box-shadow: 0px 2px 4px 2px $background-shadow-color;
+    }
+    > main.page-container {
+        @include size;
+        position: relative;
+        overflow: hidden;
+        flex: 1;
+        padding: 0.2rem;
+    }
+}

@@ -11,10 +11,14 @@ import Vue from "vue";
 import Router from "vue-router";
 import Vuex from "vuex";
 
+import math from "halo-math";
+
 // 导入系统组件
 import components from "@egova/flagwind-web";
 
 import "@/assets/styles/index.scss";
+import { PermissionUtil } from "@/common/utils/permission-util";
+import Cookies from "js-cookie";
 
 /**
  * 提供工作台的基本封装。
@@ -98,6 +102,7 @@ export default class Workbench extends WorkbenchBase {
     private initializeComponent(context: ApplicationContext): void {
         // 注册系统组件
         Vue.use(components);
+        Vue.use(math);
     }
 
     /**
@@ -110,12 +115,30 @@ export default class Workbench extends WorkbenchBase {
         Vue.use(Router);
 
         // 当为微服务项目时需要这个
-        context.routerOptions.base = window.__POWERED_BY_QIANKUN__ ? "/" + context.applicationId : "/";
+        context.routerOptions.base = (window as any).__POWERED_BY_QIANKUN__
+            ? "/" + context.applicationId
+            : "/";
         context.routerOptions.mode = "hash";
 
         // 初始化路由程序
         let router = new Router(context.routerOptions);
+        router.beforeEach((to, from, next) => {
+            let title = to.meta.title || "";
+            window.document.title = title;
+            if (!Cookies.get("access_token") && to.name !== "login" && to.name !== "403" && to.name !== "404" && to.name !== "500") {
+                // 判断是否已经登录且前往的页面不是登录页
+                next({name: "login"});
+            } else {
+                PermissionUtil.handePermissionBeforeEach(
+                    [(context.routerOptions.routes as Array<any>).find(r => r.name === "main")],
+                    to,
+                    from,
+                    next
+                );
 
+                next();
+            }
+        });
         // 设置路由程序
         context.router = router;
     }

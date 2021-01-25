@@ -93,3 +93,12 @@ flex布局
 @mixin border($width: 1px, $style: solid, $color: $font-color-white-g) {
     border: $width $style $color;
 }
+
+/* ------------------------------------------
+颜色过渡 建议使用了和主题相关配色的地方使用
+---------------------------------------------*/
+@mixin transition-color($duration: 0.2s, $function: ease-in) {
+    transition-property: color, background-color;
+    transition-duration: $duration;
+    transition-timing-function: $function;
+}

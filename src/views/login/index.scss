@@ -1,36 +1,125 @@
-.v-login{
-    &-content
-    {
+@charset 'UTF-8';
+.login-page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .background {
         position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 320px;
-        height: 200px;
-        transform: translate(-50%,-50%);
-
-        &-title
-        {
-            text-align: center;
-            font-size: 30px;
-            font-weight: 700;
-            color: #2d8cf0;
-            height: 50px;
-            line-height: 50px;
-            margin-top: 10px;
+        filter: blur(1px);
+        @include size;
+        @include bg-img("~@/assets/images/login/bg.png");
+        z-index: -1;
+    }
+    
+    .title {
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        color: #fff;
+        user-select: none;
+        cursor: default;
+        font-size: 0.48rem;
+        font-weight: 600;
+        letter-spacing: 0.1rem;
+    }
+    .content {
+        top: 10%;
+        right: 1.49rem;
+        position: absolute;
+        @include size(35%, 80%);
+        @include flex(column, flex-start, center );
+        border-radius: 0.1rem;
+        background: var(--background-color-5);
+        box-shadow:  0 0 0.1rem rgb(105, 105, 105);
+        padding-top: 1rem;
+        min-height: 5rem;
+        .ivu-input-wrapper {
+            @include size(70%, 0.8rem);
+            margin-bottom: 0.5rem;
+            .ivu-input {
+                height: 100%;
+                padding: 0.04rem 0.07rem;
+                padding-left: 1.2rem;
+                font-size: 0.2rem;
+                // border-radius: 0.1rem 0.1rem 0 0;
+                border-radius: 0.1rem;
+                border-color: #c2d0e0;
+                &:focus {
+                    border-color: #ccc;
+                    box-shadow: unset;
+                }
+            }
+            .ivu-input-icon-clear {
+                width: 0.4rem;
+                height: 0.4rem;
+                line-height: 1.07rem;
+                font-size: 0.3rem;
+                right: 0.3rem;
+                text-align: center;
+                cursor: pointer;
+                color: rgba(206, 215, 225, 1);
+            }
+            .ivu-input-prefix {
+                width: 1.2rem;
+            }
+            .user {
+                top: 50%;
+                position: relative;
+                transform: translateY(-50%);
+                margin: auto;
+                @include size(0.38rem, 0.39rem);
+                @include bg-img("~@/assets/images/login/user.png");
+            }
+            .password {
+                @extend .user;
+                @include size(0.33rem, 0.39rem);
+                @include bg-img("~@/assets/images/login/password.png");
+            }
         }
-        
-        &-form
-        {
-            display: block;
+        // .ivu-input-wrapper:nth-child(2) {
+        //     .ivu-input {
+        //         border-top: 0;
+        //         border-radius: 0 0 0.1rem 0.1rem;
+        //     }
+        // }
+        .login {
+            height: 0.73rem;
+            margin-top: 0.28rem;
+            background: #2ca3ff;
+            border-radius: 0.1rem;
+            font-size: 0.25rem;
+            line-height: 0.73rem;
             text-align: center;
-            letter-spacing: 4px;
-            color: #dddde2;
-
-            .login-btn{
-                width: 180px;
-                margin-top: 10px;
+            color: white;
+            letter-spacing: 0.08rem;
+            cursor: pointer;
+            &:hover {
+                background-color: #026bbb;
+            }
+        }
+        .login-button {
+            width: 70%;
+            height: 0.73rem;
+            margin-top: 0.28rem;
+            background: #2ca3ff;
+            border-radius: 0.1rem;
+            border: none;
+            font-size: 0.25rem;
+            line-height: 0.73rem;
+            text-align: center;
+            color: white;
+            letter-spacing: 0.08rem;
+            cursor: pointer;
+            .ivu-load-loop {
+                line-height: 1;
+                letter-spacing: 0;
+            }
+            &:hover {
+                background-color: #026bbb;
+            }
+            .logging {
+                letter-spacing: 0;
             }
         }
     }
- 
 }

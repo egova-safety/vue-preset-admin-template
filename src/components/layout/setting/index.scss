@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+.setting-wrapper {
+    @include flex(row, center, center);
+    height: 100%;
+    .action-icons {
+        @include flex(row, center, center);
+        height: 100%;
+        cursor: pointer;
+    }
+    .action-icon {
+        display: inline-block;
+        @include size(0.24rem, 0.24rem);
+        margin-right: 0.24rem;
+    }
+    .ivu-badge-diy {
+        height: 0.24rem;
+        user-select: none;
+        .ivu-badge-count {
+            height: 0.2rem;
+            display: inline-block;
+            line-height: 0.2rem;
+            min-width: 0.2rem;
+            padding: 0;
+            border: none;
+            font-size: 0.12rem;
+            transform: scale(0.8);
+            right: 0.15rem;
+            top: -0.08rem
+        }
+        &:hover {
+            .ivu-badge-count {
+                opacity: 0.8;
+            }
+        }
+    }
+    .image-viewer {
+        @include size(0.4rem ,0.4rem);
+        margin: 0 0.16rem 0 0.09rem;
+        border-radius: 0.2rem;
+        overflow: hidden;
+        @include flex(row, center, center);
+    }
+}
+
+.skin-modal-wrapper {
+    .ivu-modal-header {
+        border-bottom: none;
+    }
+    .skin-content {
+        text-align: center;
+        .ivu-radio-wrapper {
+            margin-right: 0.5rem;
+        }
+    }
+    .ivu-modal-footer {
+        border-top: none;
+    }
+}

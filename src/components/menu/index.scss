@@ -1,0 +1,169 @@
+@charset "UTF-8";
+.u-menu {
+    $background-menu-color: var(--background-color-2, #fff);
+    $background-menu-hover-color: var(--background-hover-1, rgb(240, 240, 240));
+    $box-shadow-color: var(--box-shadow-color, #000);
+    $font-color: var(--text-color-2, #000);
+    $transition-duration: 0.2s;
+    @include size(2rem, 100%);
+    min-width: 160px;
+    padding-top: 0.1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    color: $font-color;
+    background-color: $background-menu-color;
+    box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.1);
+    transition-property: all;
+    transition-duration: $transition-duration;
+    transition-timing-function: ease-in-out;
+    > .menu-section {
+        flex: 1;
+        overflow: hidden;
+        .os-host {
+            height: 100%;
+        }
+        .menu-group {
+            .menu-group-title {
+                .menu-group-title-name {
+                    flex: 1;
+                }
+                .ivu-icon-md-arrow-dropdown {
+                    transition: transform $transition-duration ease-in-out;
+                }
+            }
+            .menu-item-container {
+                overflow: hidden;
+                transition: height $transition-duration ease-in-out;
+            }
+            &.opened {
+                .ivu-icon-md-arrow-dropdown {
+                    transform: rotateZ(180deg);
+                }
+                .menu-item-container {
+                    overflow: hidden;
+                }
+            }
+        }
+
+        .router-link {
+            @include size(100%, 0.45rem);
+            @include flex(row, flex-start, center);
+            color: rgba(144, 147, 153, 1);
+            letter-spacing: 0.01rem;
+            cursor: pointer;
+            user-select: none;
+            padding: 0 0.31rem;
+            font-size: 0.16rem;
+            &:hover {
+                // background-color: rgb(240, 240, 240);
+                background-color: $background-menu-hover-color;
+            }
+            > span {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            > .iconfont {
+                margin-right: 0.18rem;
+                color: rgba(144, 147, 153, 1);
+                font-size: 0.16rem;
+            }
+            &.router-link-active {
+                @extend %router-link-active;
+            }
+        }
+    }
+    > .menu-footer {
+        width: 100%;
+        text-align: right;
+        padding: 0.1rem;
+        color: #56abfe;
+        .iconfont {
+            font-size: 0.16rem;
+            padding: 0.1rem;
+            cursor: pointer;
+            display: inline-block;
+            transform: rotateZ(0deg);
+            transition: transform $transition-duration ease-in-out;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+        .icon-collapse {
+            @include bg-img("~@/assets/images/menu.png");
+        }
+    }
+}
+.u-menu.collapsed {
+    width: 0.6rem;
+    min-width: 50px;
+    > .menu-section {
+        overflow-y: auto;
+        .router-link {
+            @include flex(row, center, center);
+            padding: 0;
+            .iconfont {
+                margin: 0;
+            }
+            &.router-link-active {
+                background-size: 90% 95%;
+            }
+        }
+        .ivu-dropdown,
+        .ivu-dropdown-rel {
+            width: 100%;
+        }
+    }
+    > .menu-footer {
+        text-align: center;
+        .iconfont {
+            transform: rotateZ(180deg);
+            margin-right: unset;
+        }
+    }
+}
+.ivu-dropdown-menu-diy {
+    .ivu-dropdown-item {
+        padding: 0;
+    }
+    .router-link {
+        padding: 0.1rem 0.25rem;
+        .iconfont {
+            margin-right: 0.18rem;
+        }
+    }
+    .router-link-active {
+        @extend %router-link-active;
+    }
+}
+
+%router-link-active {
+    color: #fff;
+    position: relative;
+    .iconfont {
+        color: #fff;
+    }
+    > i,
+    > span {
+        z-index: 1;
+    }
+    &::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0.1rem;
+        right: 0.1rem;
+        background-image: linear-gradient(
+            90deg,
+            rgba(179, 192, 255, 1),
+            rgba(32, 97, 211, 1)
+        );
+        border-radius: 0.45rem;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}

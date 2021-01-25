@@ -1,0 +1,16 @@
+[
+    {
+        "id": "skin-light",
+        "title": "浅白",
+        "href": "static/skins/skin-light.css",
+        "disabled": false,
+        "image": ""
+    },
+    {
+        "id": "skin-dark",
+        "title": "深黑",
+        "href": "static/skins/skin-dark.css",
+        "disabled": true,
+        "image": ""
+    }
+]
