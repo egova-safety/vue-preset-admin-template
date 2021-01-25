@@ -1,0 +1,23 @@
+{
+    "defaultSeverity": "warning",
+    "extends": [
+        "tslint-config-flagwind"
+    ],
+    "rules": {
+        "no-implicit-dependencies": [
+            true,
+            [
+                "@"
+            ]
+        ],
+        "no-submodule-imports": [
+            true,
+            "@egova/flagwind-core",
+            "@egova/flagwind-web",
+            "@egova/flagwind-echarts",
+            "@"
+        ],
+        "interface-name": false,
+        "eofline": false
+    }
+}
