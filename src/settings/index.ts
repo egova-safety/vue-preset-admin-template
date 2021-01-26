@@ -5,8 +5,8 @@ export const global = <any>window;
 export let commonSetting = {
     ...{
         // 后端地址
-        baseUrl: "",
-        securityServer: ""
+        baseUrl: "http://www.egova.top:30052/gateway",
+        securityServer: "/security-server"
     },
     ...{
         // 菜单显示和隐藏配置

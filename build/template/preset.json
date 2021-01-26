@@ -2,11 +2,19 @@
     "useConfigFiles": true,
     "packageManager": "npm",
     "useTaobaoRegistry": true,
-    "router": true,
+    "cssPreprocessor": "node-sass",
+    "router": false,
     "vuex": true,
     "routerHistoryMode": false,
     "plugins": {
-      "@vue/cli-plugin-typescript":{},
-      "@vue/cli-plugin-babel": {}
+        "@vue/cli-plugin-typescript": {
+            "classComponent": true,
+            "tsLint": false,
+            "lintOn": ["save"],
+            "useTsWithBabel": true,
+            "allowJs": true,
+            "exclude": ["public/**"]
+        },
+        "@vue/cli-plugin-babel": {}
     }
-  }
+}

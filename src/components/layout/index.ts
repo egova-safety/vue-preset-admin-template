@@ -11,6 +11,15 @@ import { commonSetting } from "@/settings";
     }
 })
 export default class MainView extends View {
+    // public screen: any = {
+    //     designWidth: 1920, // 设计稿屏幕宽度
+    //     designHeight: 1080, // 设计稿屏幕高度
+    //     minHeight: 620, // laptop高度
+    //     resize() {
+    //         document.documentElement.style.fontSize =
+    //             document.documentElement.clientWidth / 19.2 + "px";
+    //     }
+    // };
     @autowired(CommonService)
     public service!: CommonService;
 
@@ -23,6 +32,8 @@ export default class MainView extends View {
         if (result && !result.hasError) {
             this.$store.commit("user/save", result.result);
         }
+        // this.screen.resize();
+        // addEventListener("resize", this.screen.resize);
     }
 
     public beforeDestroy() {

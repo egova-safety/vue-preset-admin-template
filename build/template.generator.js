@@ -32,10 +32,10 @@ module.exports = function generatorIndexJS(pkg) {
         tools.copyFile('./dll.config.js', `./.template/generator/template/dll.config.js`);
         tools.copyFile('./tsconfig.json', `./.template/generator/template/tsconfig.json`);
         tools.copyFile('./tslint.json', `./.template/generator/template/tslint.json`);
-        tools.copyFile('./page.config.js', `./.template/generator/template/page.config.js`);
+        // tools.copyFile('./page.config.js', `./.template/generator/template/page.config.js`);
         tools.copyFile('./vue.config.js', `./.template/generator/template/vue.config.js`);
 
-        tools.copyFile('./.env', `./.template/generator/template/.env`);
+        // tools.copyFile('./.env', `./.template/generator/template/.env`);
 
         tools.copyFile('./.editorconfig', `./.template/generator/template/.editorconfig`);
 

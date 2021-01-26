@@ -1,9 +1,9 @@
 export const index = {
     name: "index",
     path: "/index",
-    title: "index",
+    title: "导航1",
     meta: {
-        title: "index",
+        title: "导航1",
         hideInBreadCrumb: true
     },
     redirect: "/index/home",
@@ -15,11 +15,34 @@ export const index = {
             title: "首页",
             meta: {
                 icon: "icon-home", // iconfont文件
-                title: "欢迎",
+                title: "菜单1",
                 isMenuGroup: false // 是否含二级菜单
             },
             component: () => import("@/views/welcome"),
             children: []
+        },
+        {
+            name: "index-menu2",
+            path: "menu2",
+            title: "菜单2",
+            meta: {
+                icon: "icon-home", // iconfont文件
+                title: "菜单2",
+                isMenuGroup: true // 是否含二级菜单
+            },
+            component: () => import("@/components/layout/blank/index"),
+            children: [
+                {
+                    name: "index-menu2-1",
+                    path: "menu2.1",
+                    title: "菜单2.1",
+                    meta: {
+                        icon: "icon-home", // iconfont文件
+                        title: "菜单2.1"
+                    },
+                    component: () => import("@/views/about")
+                }
+            ]
         }
     ]
 };
