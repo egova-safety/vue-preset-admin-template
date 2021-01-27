@@ -3,8 +3,7 @@ export const index = {
     path: "/index",
     title: "导航1",
     meta: {
-        title: "导航1",
-        hideInBreadCrumb: true
+        title: "导航1"
     },
     redirect: "/index/home",
     component: () => import("@/components/layout/main-wrapper/index"),
@@ -18,7 +17,7 @@ export const index = {
                 title: "菜单1",
                 isMenuGroup: false // 是否含二级菜单
             },
-            component: () => import("@/views/welcome"),
+            component: () => import("@/views/demos/welcome"),
             children: []
         },
         {
@@ -40,24 +39,59 @@ export const index = {
                         icon: "icon-home", // iconfont文件
                         title: "菜单2.1"
                     },
-                    component: () => import("@/views/about")
+                    component: () => import("@/views/demos/about")
                 }
             ]
         }
     ]
 };
+
+export const demo = {
+    name: "demo",
+    path: "/demo",
+    title: "demo",
+    meta: {
+        title: "demo"
+    },
+    redirect: "/demo/index",
+    component: () => import("@/components/layout/main-wrapper/index"),
+    children: [
+        {
+            name: "demo-index",
+            path: "index",
+            title: "导航栏",
+            meta: {
+                icon: "icon-home", // iconfont文件
+                title: "导航栏"
+            },
+            component: () => import("@/views/demos/demo-nav")
+        }
+    ]
+};
+
+export const demonav = {
+    name: "demonav",
+    path: "/nav",
+    title: "nav",
+    meta: {
+        title: "nav"
+    },
+    component: () => import("@/views/demos/demo-nav")
+};
+
 export const appRouter = {
     name: "main",
     path: "/",
-    title: "demo",
+    title: "main",
     redirect: "/index",
     meta: {},
     component: () => import("@/components/layout"),
-    children: [index]
+    children: [index, demo]
 };
 
 export const routes = [
     appRouter,
+    demonav,
     {
         name: "login",
         path: "/login",

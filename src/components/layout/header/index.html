@@ -1,10 +1,24 @@
 <header class="u-header">
     <nav class="center">
         <div class="menus">
-            <div class="router-link-content" v-for="(item,index) in  navs">
-                <a :class="{active: item.active}" @click="onRoute(item)">{{item.title}}</a>
-            </div>
-            <div v-if="navs.length" class="link-bar" :style="'transform: translateX('+ activedHeadeMenuIndex*1.5 +'rem);'"></div>
+            <!-- <div class="router-link-content" v-for="(item,index) in  navs">
+                <a :class="{actived: item.active}" @click="onRoute(item)"
+                    >{{item.title}}</a
+                >
+            </div> -->
+            <template v-for="(item,index) in  navs">
+                <router-link
+                    v-if="item.name"
+                    :to="{name: item.name}"
+                    class="router-link"
+                    tag="div"
+                >
+                    {{item.meta?.title || item.title}}
+                </router-link>
+                <div v-if="item.url" @click="onRoute(item)">
+                    {{item.meta?.title || item.title}}
+                </div>
+            </template>
         </div>
     </nav>
     <u-setting></u-setting>

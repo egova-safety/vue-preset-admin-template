@@ -1,43 +1,46 @@
-const path = require('path');
+const path = require("path");
 const isProd = process.env.NODE_ENV === "production";
 let skins = require(path.resolve("./public/static/skins/index.json"));
 module.exports = {
     //基本路径
-    publicPath: './',
+    publicPath: "./",
     //输出文件目录
-    outputDir: 'dist',
+    outputDir: "dist",
     // eslint-loader 是否在保存的时候检查
     lintOnSave: true,
     //放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。
-    assetsDir: 'static',
+    assetsDir: "static",
     //以多页模式构建应用程序。
     pages: undefined,
     //是否使用包含运行时编译器的 Vue 构建版本
     runtimeCompiler: true,
     //是否为 Babel 或 TypeScript 使用 thread-loader。该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建，在适当的时候开启几个子进程去并发的执行压缩
-    parallel: require('os').cpus().length > 1,
+    parallel: require("os").cpus().length > 1,
     //生产环境是否生成 sourceMap 文件，一般情况不建议打开
     productionSourceMap: false,
     // webpack配置
     //对内部的 webpack 配置进行更细粒度的修改 https://github.com/neutrinojs/webpack-chain see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
     chainWebpack: config => {
-
         // 以便支持 @component({ template: require("./index.html") }) 这种模版加载方式
         // 注意：写include和exclude要在use和loader之前写
-        config.module.rule('html').test(/\.html$/).exclude.add(/public/).end().use('raw-loader').loader('raw-loader');
+        config.module
+            .rule("html")
+            .test(/\.html$/)
+            .exclude.add(/public/)
+            .end()
+            .use("raw-loader")
+            .loader("raw-loader");
 
         // 只输出src下ts文件错误
-        config.plugin('fork-ts-checker').tap(args => {
-            args[0].reportFiles = ['src/**/*.{ts,tsx}'];
+        config.plugin("fork-ts-checker").tap(args => {
+            args[0].reportFiles = ["src/**/*.{ts,tsx}"];
             return args;
         });
 
-        config.resolve.alias
-            .set('@', path.join(__dirname, 'src'))
-
+        config.resolve.alias.set("@", path.join(__dirname, "src"));
 
         // 修改插件配置
-        config.plugin('html').tap(args => {
+        config.plugin("html").tap(args => {
             // args[0].title = "vue2 Lab";
             args[0].minify = {
                 removeComments: true,
@@ -50,8 +53,15 @@ module.exports = {
     },
     //调整 webpack 配置 https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
     configureWebpack: config => {
-
-
+        const StyleLintPlugin = require("stylelint-webpack-plugin");
+        config.plugins.push(
+            new StyleLintPlugin({
+                files: ["src/**/*.{vue,html,css,scss,sass,less}"],
+                failOnError: false,
+                cache: true,
+                fix: true
+            })
+        );
     },
     css: {
         // // 启用 CSS modules
@@ -79,7 +89,7 @@ module.exports = {
         port: 8000, // 端口号
         https: false, // https:{type:Boolean}
         open: true, //配置自动启动浏览器  http://172.16.1.12:7071/rest/mcdPhoneBar/
-        hot: true, // 热更新
+        hot: true // 热更新
         // proxy: 'http://localhost:8000'   // 配置跨域处理,只有一个代理
     },
 

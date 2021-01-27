@@ -34,10 +34,10 @@ module.exports = function generatorIndexJS(pkg) {
         tools.copyFile('./tslint.json', `./.template/generator/template/tslint.json`);
         // tools.copyFile('./page.config.js', `./.template/generator/template/page.config.js`);
         tools.copyFile('./vue.config.js', `./.template/generator/template/vue.config.js`);
-
-        // tools.copyFile('./.env', `./.template/generator/template/.env`);
-
-        tools.copyFile('./.editorconfig', `./.template/generator/template/.editorconfig`);
+        // tools.copyFile('./.env', `./.template/generator/template/_env`);
+        tools.copyFile('./.stylelintrc.json', `./.template/generator/template/_stylelintrc.json`);
+        tools.copyFile('./.editorconfig', `./.template/generator/template/_editorconfig`);
+        tools.copyFile('./.gitignore', `./.template/generator/template/_gitignore`);
 
         tools.copyFile('./build/template/generator/index.js', `./.template/generator/index.js`, (data) => {
             data = tools.replaceAll("\"#{dependencies}\"", dependencies, data);

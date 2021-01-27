@@ -12,13 +12,15 @@ import { appRouter } from "@/routes/index";
 })
 export default class MainWrapperView extends View {
     public cachePageList: Array<any> = cachePageList;
-
     public get hideSideMenu() {
         return commonSetting.hideSideMenu;
     }
-    
     public get menuList(): Array<any> {
-        let routes = appRouter.children[0];
+        const name = this.$route.matched[1]?.name;
+        if (!name) return [];
+        let routes = appRouter.children.find((v: any) => {
+            return v.name === name;
+        });
         let menu = PermissionUtil.handleMenuByPermissions(
             this,
             routes?.children || []

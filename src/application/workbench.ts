@@ -120,6 +120,9 @@ export default class Workbench extends WorkbenchBase {
             : "/";
         context.routerOptions.mode = "hash";
 
+        // set-project-model
+        // console.log("project model");
+
         // 初始化路由程序
         let router = new Router(context.routerOptions);
         router.beforeEach((to, from, next) => {

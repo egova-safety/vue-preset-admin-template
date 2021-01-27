@@ -70,6 +70,8 @@ import lodash from "lodash";
 - `npm run dll` 预打包核心依赖库
 - `npm run build` 生产打包
 - `npm run template` 把项目置为vue cli 模版项目并发布至npm上
+- `lint:css` 使用 `stylelint` 验证样式源码规范性
+- `lint:css-fix` 使用 `stylelint` 规范样式源码
 
 ## 更新说明
 

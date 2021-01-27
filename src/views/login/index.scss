@@ -1,125 +1,137 @@
 @charset 'UTF-8';
+
 .login-page {
     position: relative;
     width: 100%;
     height: 100%;
+
     .background {
-        position: absolute;
-        filter: blur(1px);
         @include size;
         @include bg-img("~@/assets/images/login/bg.png");
+        position: absolute;
         z-index: -1;
+        filter: blur(1px);
     }
-    
+
     .title {
         position: absolute;
         top: 20%;
         left: 10%;
-        color: #fff;
-        user-select: none;
-        cursor: default;
         font-size: 0.48rem;
         font-weight: 600;
         letter-spacing: 0.1rem;
+        color: #fff;
+        cursor: default;
+        user-select: none;
     }
+
     .content {
+        @include size(35%, 80%);
+        @include flex(column, flex-start, center);
+        position: absolute;
         top: 10%;
         right: 1.49rem;
-        position: absolute;
-        @include size(35%, 80%);
-        @include flex(column, flex-start, center );
-        border-radius: 0.1rem;
-        background: var(--background-color-5);
-        box-shadow:  0 0 0.1rem rgb(105, 105, 105);
-        padding-top: 1rem;
         min-height: 5rem;
-        .ivu-input-wrapper {
-            @include size(70%, 0.8rem);
-            margin-bottom: 0.5rem;
-            .ivu-input {
-                height: 100%;
-                padding: 0.04rem 0.07rem;
-                padding-left: 1.2rem;
-                font-size: 0.2rem;
-                // border-radius: 0.1rem 0.1rem 0 0;
-                border-radius: 0.1rem;
-                border-color: #c2d0e0;
-                &:focus {
-                    border-color: #ccc;
-                    box-shadow: unset;
-                }
-            }
-            .ivu-input-icon-clear {
-                width: 0.4rem;
-                height: 0.4rem;
-                line-height: 1.07rem;
-                font-size: 0.3rem;
-                right: 0.3rem;
-                text-align: center;
-                cursor: pointer;
-                color: rgba(206, 215, 225, 1);
-            }
-            .ivu-input-prefix {
-                width: 1.2rem;
-            }
-            .user {
-                top: 50%;
-                position: relative;
-                transform: translateY(-50%);
-                margin: auto;
-                @include size(0.38rem, 0.39rem);
-                @include bg-img("~@/assets/images/login/user.png");
-            }
-            .password {
-                @extend .user;
-                @include size(0.33rem, 0.39rem);
-                @include bg-img("~@/assets/images/login/password.png");
-            }
-        }
-        // .ivu-input-wrapper:nth-child(2) {
-        //     .ivu-input {
-        //         border-top: 0;
-        //         border-radius: 0 0 0.1rem 0.1rem;
-        //     }
-        // }
+        padding-top: 1rem;
+        background: var(--background-color-5);
+        border-radius: 0.1rem;
+        box-shadow: 0 0 0.1rem rgb(105, 105, 105);
+
         .login {
             height: 0.73rem;
             margin-top: 0.28rem;
-            background: #2ca3ff;
-            border-radius: 0.1rem;
             font-size: 0.25rem;
             line-height: 0.73rem;
-            text-align: center;
-            color: white;
             letter-spacing: 0.08rem;
+            color: #fff;
+            text-align: center;
             cursor: pointer;
-            &:hover {
-                background-color: #026bbb;
-            }
-        }
-        .login-button {
-            width: 70%;
-            height: 0.73rem;
-            margin-top: 0.28rem;
             background: #2ca3ff;
             border-radius: 0.1rem;
-            border: none;
-            font-size: 0.25rem;
-            line-height: 0.73rem;
-            text-align: center;
-            color: white;
-            letter-spacing: 0.08rem;
-            cursor: pointer;
-            .ivu-load-loop {
-                line-height: 1;
-                letter-spacing: 0;
-            }
+
             &:hover {
                 background-color: #026bbb;
-            }
-            .logging {
-                letter-spacing: 0;
             }
         }
     }
+
+    .login-button {
+        width: 70%;
+        height: 0.73rem;
+        margin-top: 0.28rem;
+        font-size: 0.25rem;
+        line-height: 0.73rem;
+        letter-spacing: 0.08rem;
+        color: #fff;
+        text-align: center;
+        cursor: pointer;
+        background: #2ca3ff;
+        border: 0;
+        border-radius: 0.1rem;
+
+        .ivu-load-loop {
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        &:hover {
+            background-color: #026bbb;
+        }
+
+        .logging {
+            letter-spacing: 0;
+        }
+    }
+
+    .ivu-input-wrapper {
+        @include size(70%, 0.8rem);
+        margin-bottom: 0.5rem;
+
+        .ivu-input {
+            height: 100%;
+            padding: 0.04rem 0.07rem;
+            padding-left: 1.2rem;
+            font-size: 0.2rem;
+            border-color: #c2d0e0;
+            border-radius: 0.1rem;
+
+            &:focus {
+                border-color: #ccc;
+                box-shadow: unset;
+            }
+        }
+
+        .ivu-input-icon-clear {
+            right: 0.3rem;
+            width: 0.4rem;
+            height: 0.4rem;
+            font-size: 0.3rem;
+            line-height: 1.07rem;
+            color: rgba(206, 215, 225, 1);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .ivu-input-prefix {
+            width: 1.2rem;
+        }
+
+        .user {
+            @extend %user;
+        }
+
+        .password {
+            @extend %user;
+            @include size(0.33rem, 0.39rem);
+            @include bg-img("~@/assets/images/login/password.png");
+        }
+    }
+}
+%user {
+    @include size(0.38rem, 0.39rem);
+    @include bg-img("~@/assets/images/login/user.png");
+    position: relative;
+    top: 50%;
+    margin: auto;
+    transform: translateY(-50%);
 }
