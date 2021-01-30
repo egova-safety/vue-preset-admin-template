@@ -32,10 +32,17 @@ export default class Workspace extends Vue {
      */
     public constructor(workbench: Workbench) {
         let options = {
-            el: "#app",
+            el: (window as any).__POWERED_BY_QIANKUN__
+                ? "#container #app"
+                : "#app",
             router: (workbench.applicationContext as ApplicationContext).router,
             store: (workbench.applicationContext as ApplicationContext).store,
-            template: '<div id="app"><router-view /></div>'
+            /* main-project&sub-project */
+            template:
+                process.env.VUE_APP_PROJECT_TYPE === "subject"
+                    ? '<div id="app"><router-view /></div>'
+                    : '<div id="app"><qk-main-view /></div>'
+            /* main-project&sub-project-end */
         };
 
         // 传入配置进行初始化

@@ -1,4 +1,5 @@
 const path = require("path");
+const { name } = require("./package");
 const isProd = process.env.NODE_ENV === "production";
 let skins = require(path.resolve("./public/static/skins/index.json"));
 module.exports = {
@@ -62,6 +63,9 @@ module.exports = {
                 fix: true
             })
         );
+        config.output.library = `${name}-[name]`;
+        config.output.libraryTarget = "umd";
+        config.output.jsonpFunction = `webpackJsonp_${name}`;
     },
     css: {
         // // 启用 CSS modules
@@ -85,6 +89,9 @@ module.exports = {
     },
     // webpack-dev-server 相关配置 https://webpack.js.org/configuration/dev-server/
     devServer: {
+        headers: {
+            "Access-Control-Allow-Origin": "*"
+        },
         host: "0.0.0.0",
         port: 8000, // 端口号
         https: false, // https:{type:Boolean}

@@ -1,0 +1,13 @@
+<header class="u-header">
+    <nav class="center">
+        <div class="menus">
+            <div class="router-link-content">
+                <a @click="goto()">首页</a>
+            </div>
+            <div class="router-link-content" v-for="(item,index) in  navs">
+                <a @click="goto(item)">{{item.name}}</a>
+            </div>
+        </div>
+    </nav>
+    <u-setting></u-setting>
+</header>

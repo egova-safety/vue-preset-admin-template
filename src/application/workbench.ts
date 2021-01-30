@@ -19,6 +19,9 @@ import components from "@egova/flagwind-web";
 import "@/assets/styles/index.scss";
 import { PermissionUtil } from "@/common/utils/permission-util";
 import Cookies from "js-cookie";
+/* main-project */
+import MainView from "@/views/main-modules";
+/* main-project-end */
 
 /**
  * 提供工作台的基本封装。
@@ -71,9 +74,11 @@ export default class Workbench extends WorkbenchBase {
 
         // 初始化组件
         this.initializeComponent(context);
-
+        
         // 初始化路由程序
-        this.initializeRouter(context);
+        /* main-project&sub-project */
+        (process.env.VUE_APP_PROJECT_TYPE === "subject") && this.initializeRouter(context);
+        /* main-project&sub-project-end */
 
         // 初始化状态管理程序
         this.initializeStore(context);
@@ -103,6 +108,9 @@ export default class Workbench extends WorkbenchBase {
         // 注册系统组件
         Vue.use(components);
         Vue.use(math);
+        /* main-project */
+        Vue.component("qk-main-view", MainView);
+        /* main-project-end */
     }
 
     /**
@@ -119,9 +127,6 @@ export default class Workbench extends WorkbenchBase {
             ? "/" + context.applicationId
             : "/";
         context.routerOptions.mode = "hash";
-
-        // set-project-model
-        // console.log("project model");
 
         // 初始化路由程序
         let router = new Router(context.routerOptions);
