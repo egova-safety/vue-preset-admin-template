@@ -11,6 +11,6 @@ export const routes = [
         path: "/welcome",
         title: "欢迎",
         meta: { title: "欢迎" },
-        component: () => import("@/pages/page2/views/welcome/index")
+        component: () => import("@/pages/main/views/welcome/index")
     }
 ];

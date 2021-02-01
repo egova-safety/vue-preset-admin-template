@@ -10,13 +10,8 @@ interface MicroAppItem {
 export const microApps: Array<MicroAppItem> = [
     {
         name: "vue app", // 子应用名称
-        entry: "//localhost:8200", // 子应用入口
-        activeRule: "/sub2" // 子应用触发规则（路径）
-    },
-    {
-        name: "vue app2",
-        entry: "//localhost:8201",
-        activeRule: "/sub3"
+        entry: "//localhost:8000/sub.html", // 子应用入口
+        activeRule: "/sub" // 子应用触发规则（路径）
     }
 ];
 

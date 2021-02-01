@@ -2,8 +2,8 @@ import Vue from "vue";
 
 import flagwind from "@egova/flagwind-core";
 import IWorkbench = flagwind.IWorkbench;
-import ApplicationContext from "@/application/context";
-import Workbench from "@/application/workbench";
+import ApplicationContext from "./context";
+import Workbench from "./workbench";
 
 /**
  * 提供工作空间的常用功能。
@@ -32,17 +32,10 @@ export default class Workspace extends Vue {
      */
     public constructor(workbench: Workbench) {
         let options = {
-            el: (window as any).__POWERED_BY_QIANKUN__
-                ? "#container #app"
-                : "#app",
+            el: "#container #app",
             router: (workbench.applicationContext as ApplicationContext).router,
             store: (workbench.applicationContext as ApplicationContext).store,
-            /* main-project&sub-project */
-            template:
-                process.env.VUE_APP_PROJECT_TYPE === "subject"
-                    ? '<div id="app"><router-view /></div>'
-                    : '<div id="app"><qk-main-view /></div>'
-            /* main-project&sub-project-end */
+            template: '<div id="app"><router-view /></div>'
         };
 
         // 传入配置进行初始化

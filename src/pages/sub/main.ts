@@ -1,12 +1,7 @@
 import flagwind from "@egova/flagwind-core";
-import ApplicationContext from "@/application/context";
+import ApplicationContext from "./application/context";
 import { routes } from "./routes";
-import modules from "./store";
-
-/* main-project */
-import { registerMicroApps, start } from "qiankun";
-import microApps from "./micro-app";
-/* main-project-end */
+import modules from "@/store";
 
 if ((window as any).__POWERED_BY_QIANKUN__) {
     __webpack_public_path__ = (window as any)
@@ -32,19 +27,3 @@ export async function mount(props: any) {
 export async function unmount() {
     flagwind.Application.exit();
 }
-
-/* main-project */
-// 注册子应用
-registerMicroApps(microApps, {
-    beforeLoad: () => {
-        console.log("加载前");
-        return Promise.resolve();
-    },
-    afterMount: () => {
-        console.log("加载后");
-        return Promise.resolve();
-    }
-});
-// 开启服务
-start();
-/* main-project-end */
