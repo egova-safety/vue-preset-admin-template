@@ -1,12 +1,13 @@
-const path = require('path');
+const path = require("path");
 
 let pages = require(path.resolve("./src/pages/index.json"));
 let skins = require(path.resolve("./public/static/skins/index.json"));
+console.log(skins);
 
 // 修改插件配置
-let htmlPlugins = (pages) ? Object.keys(pages).map(g => "html-" + g) : ["html"];
+let htmlPlugins = pages ? Object.keys(pages).map(g => "html-" + g) : ["html"];
 
-const plugin = (config) => {
+const plugin = config => {
     htmlPlugins.forEach(v => {
         config.plugin(v).tap(args => {
             if (args[0]) {
@@ -20,10 +21,9 @@ const plugin = (config) => {
             return args;
         });
     });
-}
+};
 
 module.exports = {
     pages: pages,
     plugin: plugin
 };
-

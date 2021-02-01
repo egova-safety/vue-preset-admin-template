@@ -64,7 +64,7 @@ export const demo = {
                 icon: "icon-home", // iconfont文件
                 title: "导航栏"
             },
-            component: () => import("@/views/demos/demo-nav")
+            component: () => import("@/views/demos/demo-nav/index")
         }
     ]
 };
@@ -76,7 +76,7 @@ export const demonav = {
     meta: {
         title: "nav"
     },
-    component: () => import("@/views/demos/demo-nav")
+    component: () => import("@/views/demos/demo-nav/index")
 };
 
 export const appRouter = {

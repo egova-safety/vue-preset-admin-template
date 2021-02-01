@@ -17,7 +17,7 @@ import "@/assets/styles/index.scss";
 import { PermissionUtil } from "@/common/utils/permission-util";
 import Cookies from "js-cookie";
 /* main-project */
-import MainView from "@/views/main-modules";
+import MainView from "../views/index";
 /* main-project-end */
 
 /**

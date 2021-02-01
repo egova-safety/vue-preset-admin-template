@@ -1,6 +1,6 @@
-import ApplicationContext from "@/application/context";
-import Workbench from "@/application/workbench";
-import Workspace from "@/application/workspace";
+import ApplicationContext from "./context";
+import Workbench from "./workbench";
+import Workspace from "./workspace";
 
 export {
     ApplicationContext,

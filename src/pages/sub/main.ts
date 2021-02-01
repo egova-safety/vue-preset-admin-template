@@ -1,6 +1,6 @@
 import flagwind from "@egova/flagwind-core";
 import ApplicationContext from "./application/context";
-import { routes } from "./routes";
+import { routes } from "@/routes";
 import modules from "@/store";
 
 if ((window as any).__POWERED_BY_QIANKUN__) {

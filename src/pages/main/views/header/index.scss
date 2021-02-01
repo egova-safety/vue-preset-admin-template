@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.u-header {
+.qiuankun-u-header {
     @include flex(row, space-between, center);
     @include size(100%, 0.6rem);
     overflow: hidden;
@@ -9,31 +9,18 @@
     box-shadow: 0 2px 4px 2px var(--box-shadow-color, #000);
 
     .center {
-        @include flex(row, center, center);
+        @include flex(row, flex-end, center);
         flex: 1;
+        padding-right: 0.8rem;
 
         .menus {
             @include flex(row, center, center);
             position: relative;
         }
-
-        .link-bar {
-            @include size(1.5rem, 2px);
-            position: absolute;
-            bottom: 1px;
-            left: 0;
-            padding: 0 0.22rem;
-            background-color: #2d8cf0;
-            transform: translateZ(0);
-            // transform: translate3d(1.5rem, 0, 0);
-            transform: translateX(1.5rem);
-            transition: transform 0.2s ease-in-out;
-            background-clip: content-box;
-        }
     }
 
     .router-link-content {
-        @include size(1.5rem, 0.6rem);
+        @include size(1rem, 0.6rem);
         line-height: 0.6rem;
         text-align: center;
 
@@ -60,6 +47,5 @@
                 opacity: 0.8;
             }
         }
-
     }
 }

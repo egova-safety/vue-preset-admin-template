@@ -32,7 +32,9 @@ export default class Workspace extends Vue {
      */
     public constructor(workbench: Workbench) {
         let options = {
-            el: "#container #app",
+            el: (window as any).__POWERED_BY_QIANKUN__
+                ? "#container #app"
+                : "#app",
             router: (workbench.applicationContext as ApplicationContext).router,
             store: (workbench.applicationContext as ApplicationContext).store,
             template: '<div id="app"><router-view /></div>'

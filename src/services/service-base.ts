@@ -1,5 +1,5 @@
 import flagwind from "@egova/flagwind-core";
-import { ApplicationContext } from "@/application";
+// import { ApplicationContext } from "@/application";
 import { commonSetting } from "@/settings";
 import axios from "axios";
 /**
@@ -23,9 +23,9 @@ export default abstract class ServiceBase {
      * @property
      * @returns ApplicationContext
      */
-    protected get applicationContext(): ApplicationContext {
-        return flagwind.Application.context as ApplicationContext;
-    }
+    // protected get applicationContext(): ApplicationContext {
+    //     return flagwind.Application.context as ApplicationContext;
+    // }
 
     /**
      * 发送post请求

@@ -25,7 +25,6 @@ export class HeaderComponent extends Component {
             return;
         }
         history.pushState(null, item.activeRule, item.activeRule);
-
         // window.location.href = item.activeRule;
     }
     public onGoToHome() {
