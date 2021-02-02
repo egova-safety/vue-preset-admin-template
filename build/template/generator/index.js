@@ -51,7 +51,10 @@ module.exports.hooks = (api, options) => {
 
             // 删除文件
             remove(api.resolve("src/pages"));
-            if (isSubModel) return;
+            if (isSubModel) {
+                remove(api.resolve("src/micro-app.ts"));
+                return;
+            }
             remove(api.resolve("src/common/utils/permission-util.ts"));
             remove(api.resolve("src/components"));
             remove(api.resolve("src/routes"));
