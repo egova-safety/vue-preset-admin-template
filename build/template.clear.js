@@ -1,2 +1,2 @@
 const tools = require("./template.tools");
-tools.rimraf("./template");
+tools.rimraf("./.template");
