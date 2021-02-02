@@ -116,7 +116,6 @@ export class PermissionUtil {
     // 头部只显示有权限的模块菜单
     public static handPermissionMenu(vm: Vue, menuList: Array<any>) {
         const permissions = this.getPermissions();
-        // let permissions = this.permissions || new Set((vm.$store.state.user.permissions || []).map((v: any) => v.schemaId.split(":")[1]));
         if (Cookies.get("username") === "admin") return menuList;
         return menuList.filter(menu => {
             return (permissions && permissions.has(menu.meta?.schemaId?.split(":")[1])) || !menu.meta?.schemaId;
@@ -129,9 +128,7 @@ export class PermissionUtil {
         if (Cookies.get("username") === "admin") {
             return menuList;
         }
-        // let permissions = vm.$store.state.user.permissions || [];
         const permissions = this.getPermissions();
-        // let set: Set<string> = new Set(permissions.map((v: any) => v.schemaId));
         // 先排除一级菜单中 没有权限的单个菜单,schemaId为空的不过滤
         menuList = menuList.filter((menu: any) => !menu.meta.schemaId || permissions.has(menu.meta.schemaId));
         // 排除二级菜单

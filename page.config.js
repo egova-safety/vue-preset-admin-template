@@ -2,7 +2,6 @@ const path = require("path");
 
 let pages = require(path.resolve("./src/pages/index.json"));
 let skins = require(path.resolve("./public/static/skins/index.json"));
-console.log(skins);
 
 // 修改插件配置
 let htmlPlugins = pages ? Object.keys(pages).map(g => "html-" + g) : ["html"];

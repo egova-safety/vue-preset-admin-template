@@ -1,6 +1,5 @@
 import { component, Component, watch } from "@egova/flagwind-web";
 import "./index.scss";
-import { PermissionUtil } from "@/common/utils/permission-util";
 import { SkinUtil } from "@/common/utils/skin-utils";
 @component({
     template: require("./index.html")
@@ -57,7 +56,6 @@ export default class Setting extends Component {
             onOk: () => {
                 this.$store.commit("user/logout");
                 localStorage.removeItem("user");
-                PermissionUtil.clearPermisstionsMap();
                 window.location.href = "index.html#/login";
             }
         });

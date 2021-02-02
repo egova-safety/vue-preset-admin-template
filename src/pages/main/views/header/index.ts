@@ -24,7 +24,8 @@ export class HeaderComponent extends Component {
             window.location.href = "/";
             return;
         }
-        history.pushState(null, item.activeRule, item.activeRule);
+        // history.pushState(null, "/", "sub/#/index/menu2/menu2.1");
+        history.pushState(null, item.activeRule, `${item.activeRule}/#/index/menu2/menu2.1`);
         // window.location.href = item.activeRule;
     }
     public onGoToHome() {

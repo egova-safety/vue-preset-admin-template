@@ -1,9 +1,8 @@
 import { component, View, watch, autowired } from "@egova/flagwind-web";
 import "./index.scss";
 import { CommonService } from "@/services";
-import { PermissionUtil } from "@/common/utils/permission-util";
 import { HeaderComponent } from "./header";
-import { commonSetting } from "@/settings";
+import { addGlobalUncaughtErrorHandler } from "qiankun";
 @component({
     template: require("./index.html"),
     components: {
@@ -14,14 +13,17 @@ export default class MainView extends View {
     @autowired(CommonService)
     public service!: CommonService;
 
+    public handError(e: any) {
+        console.error(e);
+        this.$message.error("微服务加载失败");
+        history.pushState(null, "/", "/");
+    }
+
     public async mounted() {
         let result = await this.service.getCurrentUser();
         if (result && !result.hasError) {
             this.$store.commit("user/save", result.result);
         }
-    }
-
-    public beforeDestroy() {
-        PermissionUtil.clearPermisstionsMap();
+        addGlobalUncaughtErrorHandler(this.handError);
     }
 }
