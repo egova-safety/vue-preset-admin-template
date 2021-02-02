@@ -19,16 +19,15 @@ export class HeaderComponent extends Component {
     public get navs(): Array<any> {
         return microApps;
     }
-    public goto(item?: any) {
+    public goto(item?: any, path?: string) {
         if (!item) {
-            window.location.href = "/";
+            history.pushState(null, "", "/index.html");
             return;
         }
-        // history.pushState(null, "/", "sub/#/index/menu2/menu2.1");
-        history.pushState(null, item.activeRule, `${item.activeRule}/#/index/menu2/menu2.1`);
-        // window.location.href = item.activeRule;
+        history.pushState(null, "/", `${item.activeRule}${path || ""}`);
+        // history.pushState(null, item.activeRule, `${item.activeRule}#/index/menu2/menu2.1`);
     }
     public onGoToHome() {
-        window.location.href = "index.html";
+        history.pushState(null, "", "/");
     }
 }

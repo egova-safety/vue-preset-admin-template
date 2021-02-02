@@ -2,10 +2,8 @@ import flagwind from "@egova/flagwind-core";
 import ApplicationContext from "./application/context";
 import modules from "@/store";
 
-/* main-project */
 import { registerMicroApps, start } from "qiankun";
 import microApps from "@/micro-app";
-/* main-project-end */
 
 // 获取应用上下文
 let context = new ApplicationContext(null, modules);
@@ -13,7 +11,6 @@ let context = new ApplicationContext(null, modules);
 // 启动应用程序
 flagwind.Application.start(context);
 
-/* main-project */
 // 注册子应用
 registerMicroApps(microApps, {
     beforeLoad: () => {
@@ -27,4 +24,3 @@ registerMicroApps(microApps, {
 });
 // 开启服务
 start();
-/* main-project-end */

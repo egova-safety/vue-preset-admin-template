@@ -7,6 +7,21 @@
             <div class="router-link-content" v-for="(item,index) in  navs">
                 <a @click="goto(item)">{{item.name}}</a>
             </div>
+            <div class="router-link-content">
+                <a
+                    @click="goto(navs[0], '#/index/menu2/menu2.1')"
+                    title="子应用about页面"
+                    >about页面</a
+                >
+            </div>
+            <div class="router-link-content">
+                <a
+                    :href="navs[0].entry"
+                    target="_blank"
+                    title="独立运行的子项目"
+                    >{{navs[0].name}}</a
+                >
+            </div>
         </div>
     </nav>
     <u-setting></u-setting>

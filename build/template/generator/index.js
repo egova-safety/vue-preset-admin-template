@@ -45,7 +45,7 @@ module.exports.hooks = (api, options) => {
             );
             !isSubModel &&
                 move(api.resolve(`src/pages/main/views`), api.resolve("src"));
-            
+
             // 编辑相关文件
             editCode(api, isSubModel);
 
@@ -54,6 +54,8 @@ module.exports.hooks = (api, options) => {
             if (isSubModel) return;
             remove(api.resolve("src/common/utils/permission-util.ts"));
             remove(api.resolve("src/components"));
+            remove(api.resolve("src/routes"));
+            remove(api.resolve("src/views/demos"));
         } catch (error) {
             console.log(error);
         }
@@ -87,6 +89,27 @@ function editCode(api, isSubModel) {
     );
     fs.writeFileSync(api.resolve("vue.config.js"), vueConfig, {
         encoding: "utf-8"
+    });
+
+    if (!isSubModel) return;
+
+    fs.readdirSync(api.resolve("public/static/skins")).forEach(item => {
+        //更新参数，递归调用
+        if (item.endsWith(".css")) {
+            let file = fs.readFileSync(
+                api.resolve(`public/static/skins/${item}`),
+                {
+                    encoding: "utf-8"
+                }
+            );
+            fs.writeFileSync(
+                api.resolve(`public/static/skins/${item}`),
+                file.replace(/!important;/g, ";"),
+                {
+                    encoding: "utf-8"
+                }
+            );
+        }
     });
 }
 
