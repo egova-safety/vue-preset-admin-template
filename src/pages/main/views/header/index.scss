@@ -1,15 +1,16 @@
 @charset "UTF-8";
 
-.qiuankun-u-header {
+.u-qiuankun-header {
+    position: relative;
+    z-index: 2;
     @include flex(row, space-between, center);
     @include size(100%, 0.6rem);
-    overflow: hidden;
 
     background-color: var(--background-color, #fff);
     box-shadow: 0 2px 4px 2px var(--box-shadow-color, #000);
 
-    .center {
-        @include flex(row, flex-end, center);
+    .common-menu {
+        @include flex(row, flex-start, center);
         flex: 1;
         padding-right: 0.8rem;
 
@@ -19,33 +20,43 @@
         }
     }
 
-    .router-link-content {
-        @include size(1rem, 0.6rem);
+    .menus-item {
+        @include size(unset, 0.6rem);
+        margin-left: 0.25rem;
         line-height: 0.6rem;
         text-align: center;
 
         > a {
-            @include size(2.2rem, 1.2rem);
             display: inline-block;
-            margin: 0 0.2rem;
-            font-size: 0.32rem;
-            font-weight: 550;
-            line-height: 1.2rem;
+            font-size: 0.18rem;
             letter-spacing: 0.02rem;
             color: #000;
             cursor: pointer;
-            transform: scale(0.5);
             user-select: none;
-            transform-origin: 0 0;
-
-            &.actived {
-                color: #1583ff;
-            }
 
             &:hover {
                 color: #1583ff;
                 opacity: 0.8;
             }
         }
+    }
+
+    .ivu-icon-ios-arrow-down {
+        transition: transform 0.2s ease-in-out;
+
+        &.open {
+            transform: rotateZ(180deg);
+        }
+    }
+
+    .common-topbar-dropdown {
+        position: absolute;
+        top: 0.6rem;
+        width: 100%;
+        background-color: #fff;
+        border-top: 1px solid rgb(0 0 0 / 7%);
+        box-shadow: 0 12px 10px 0 rgb(0 0 0 / 7%);
+        transition: height 0.2s cubic-bezier(0.215, 0.61, 0.355, 1),
+            opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
     }
 }
