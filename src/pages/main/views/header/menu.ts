@@ -4,28 +4,32 @@ interface MenuItem {
     menus?: Array<any>;
 }
 export const subMenus: MenuItem = {
-    name: "子项目",
+    name: "整合应用",
     activeRule: "",
     menus: [
         {
-            name: "index",
+            name: "sub子应用",
             links: [
                 {
-                    name: "welcome",
-                    path: "sub#/index/home"
+                    name: "sub-welcome",
+                    path: "sub#/index/welcome"
                 },
                 {
-                    name: "about",
-                    path: "sub#/index/menu2/menu2.1"
+                    name: "sub-about",
+                    path: "sub#/index/about"
                 }
             ]
         },
         {
-            name: "demo",
+            name: "test子应用",
             links: [
                 {
-                    name: "demo",
-                    path: "sub#/demo/index"
+                    name: "test-welcome",
+                    path: "test#/index/welcome"
+                },
+                {
+                    name: "test-about",
+                    path: "test#/index/about"
                 }
             ]
         }

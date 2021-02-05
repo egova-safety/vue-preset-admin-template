@@ -23,18 +23,18 @@ export default class MainView extends View {
     @autowired(CommonService)
     public service!: CommonService;
 
-    public get hideNavigation() {
-        return commonSetting.hideNavigation;
+    public get hideHeader() {
+        return commonSetting.__HIDE_HEADER;
     }
 
-    public async mounted() {
-        let result = await this.service.getCurrentUser();
-        if (result && !result.hasError) {
-            this.$store.commit("user/save", result.result);
-        }
-        // this.screen.resize();
-        // addEventListener("resize", this.screen.resize);
-    }
+    // public async mounted() {
+    //     let result = await this.service.getCurrentUser();
+    //     if (result && !result.hasError) {
+    //         this.$store.commit("user/save", result.result);
+    //     }
+    //     // this.screen.resize();
+    //     // addEventListener("resize", this.screen.resize);
+    // }
 
     public beforeDestroy() {
         PermissionUtil.clearPermisstionsMap();

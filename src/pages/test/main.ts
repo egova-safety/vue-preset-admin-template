@@ -40,7 +40,6 @@ export async function mount(props: any) {
     }
     flagwind.Application.start(context);
 }
-
 export async function unmount() {
     flagwind.Application.exit();
 }

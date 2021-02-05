@@ -20,10 +20,10 @@ export default class MainView extends View {
     }
 
     public async mounted() {
-        let result = await this.service.getCurrentUser();
-        if (result && !result.hasError) {
-            this.$store.commit("user/save", result.result);
-        }
+        // let result = await this.service.getCurrentUser();
+        // if (result && !result.hasError) {
+        //     this.$store.commit("user/save", result.result);
+        // }
         addGlobalUncaughtErrorHandler(this.handError);
     }
 }

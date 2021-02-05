@@ -81,7 +81,7 @@ export default class ApplicationContext extends ApplicationContextBase {
      * @private
      */
     public constructor(routes: any, modules: any) {
-        super("sub");
+        super("test");
         this.routerOptions = { routes: routes };
         this.storeOptions = { modules: modules };
     }

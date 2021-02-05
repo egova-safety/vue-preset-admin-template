@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <div class="v-layout-wrapper">
-    <u-header v-if="!hideNavigation"> </u-header>
+    <u-header v-if="!hideHeader"> </u-header>
     <section class="main-content">
         <keep-alive>
             <router-view v-if="$route.meta.keepAlive"> </router-view>

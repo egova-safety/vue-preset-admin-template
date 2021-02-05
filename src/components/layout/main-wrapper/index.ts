@@ -13,7 +13,7 @@ import { appRouter } from "@/routes/index";
 export default class MainWrapperView extends View {
     public cachePageList: Array<any> = cachePageList;
     public get hideSideMenu() {
-        return commonSetting.hideSideMenu;
+        return commonSetting.__HIDE_SIDE_MENU;
     }
     public get menuList(): Array<any> {
         const name = this.$route.matched[1]?.name;
