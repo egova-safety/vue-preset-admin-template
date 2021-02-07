@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+.u-qiuankun-u-menu {
+    @include size;
+    @include flex(row, flex-start,flex-start);
+
+    .menu-left {
+        @include size(3rem, 100%);
+        @include flex(column, flex-start, flex-start);
+        padding: 0.2rem 0.5rem 0.2rem 1.5rem;
+        background-color: rgba(245, 245, 245);
+
+        .link-group {
+            position: relative;
+            cursor: default;
+        }
+
+        .link-group::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 98%;
+            height: 2px;
+            background-color: #a862ea;
+            content: "";
+            transform: scaleX(0);
+            transition: transform 0.2s ease-in-out;
+            // transform-origin: bottom right;
+            transform-origin: bottom left;
+        }
+
+        .link-group.active::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    }
+
+    .menu-main {
+        flex: 1;
+        @include size(80%, 100%);
+        padding: 0.1rem;
+
+        .link {
+            padding: 0 0.1rem;
+            color: black;
+
+            &:hover {
+                color: rgb(67, 67, 226);
+            }
+        }
+    }
+}

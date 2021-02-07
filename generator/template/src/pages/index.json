@@ -1,0 +1,26 @@
+{
+    "sub": {
+        "name": "sub",
+        "entry": "src/pages/sub/main.ts",
+        "template": "public/index.html",
+        "filename": "sub.html",
+        "title": "子工程",
+        "chunks": ["chunk-vendors", "chunk-common", "sub"]
+    },
+    "test": {
+        "name": "test",
+        "entry": "src/pages/test/main.ts",
+        "template": "public/index.html",
+        "filename": "test.html",
+        "title": "子工程",
+        "chunks": ["chunk-vendors", "chunk-common", "test"]
+    },
+    "index":{
+        "name": "index",
+        "entry": "src/pages/main/main.ts",
+        "template": "public/index.html",
+        "filename": "index.html",
+        "title": "主工程",
+        "chunks": ["chunk-vendors", "chunk-common", "index"]
+    }
+}

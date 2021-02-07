@@ -1,0 +1,19 @@
+<article class="login-page">
+    <div class="title">
+        <span>欢迎使用</span>
+        <br />
+        <span>{{title}}</span>
+    </div>
+    <div class="content">
+        <i-input placeholder="请输入账号" clearable v-model.trim="username">
+            <div class="user" slot="prefix"></div>
+        </i-input>
+        <i-input placeholder="请输入密码" clearable v-model="password" type="password" @on-keyup.enter="onLogin">
+            <div class="password" slot="prefix"></div>
+        </i-input>
+        <i-button :loading="logging" class="login-button" @click="onLogin"
+            >{{logging?'登陆中':'登陆'}}<span class="logging" v-if="logging">...</span></i-button
+        >
+    </div>
+    <div class="background"></div>
+</article>

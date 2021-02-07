@@ -1,0 +1,29 @@
+<header class="u-qiuankun-header">
+    <nav class="common-menu">
+        <div class="menus">
+            <div class="menus-item">
+                <a @click="goto()">首页</a>
+            </div>
+            <div class="menus-item" v-for="(item,index) in  navs">
+                <a @click="goto(item)">{{item.name}}</a>
+            </div>
+            <template v-for="(item, index) in Object.keys(menuData)">
+                <div class="menus-item" @mouseover="onMouseover(item)" @mouseleave="onMouseleave">
+                    <a>{{menuData[item].name}}</a>
+                    <i-icon :class="{'open': item === currentMenuKey}" type="ios-arrow-down" />
+                </div>
+            </template>
+            <div class="menus-item">
+                <a :href="navs[0].entry" target="_blank" title="独立运行的子项目">{{navs[0].name}}</a>
+            </div>
+            <div class="menus-item">
+                <a :href="navs[1].entry" target="_blank" title="独立运行的子项目">{{navs[1].name}}</a>
+            </div>
+        </div>
+    </nav>
+    <u-setting></u-setting>
+    <div class="common-topbar-dropdown" @mouseover="onMouseover(currentMenuKey)" @mouseleave="onMouseleave"
+        :data-item="currentMenuKey" :style="dropDownStyle">
+        <u-menu :data="currentMenu?.menus || []"></u-menu>
+    </div>
+</header>

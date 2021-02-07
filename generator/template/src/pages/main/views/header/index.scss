@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+.u-qiuankun-header {
+    position: relative;
+    z-index: 2;
+    @include flex(row, space-between, center);
+    @include size(100%, 0.6rem);
+
+    background-color: var(--background-color, #fff);
+    box-shadow: 0 2px 4px 2px var(--box-shadow-color, #000);
+
+    .common-menu {
+        @include flex(row, flex-start, center);
+        flex: 1;
+        padding-right: 0.8rem;
+
+        .menus {
+            @include flex(row, center, center);
+            position: relative;
+        }
+    }
+
+    .menus-item {
+        @include size(unset, 0.6rem);
+        margin-left: 0.25rem;
+        line-height: 0.6rem;
+        text-align: center;
+
+        > a {
+            display: inline-block;
+            font-size: 0.18rem;
+            letter-spacing: 0.02rem;
+            color: #000;
+            cursor: pointer;
+            user-select: none;
+
+            &:hover {
+                color: #1583ff;
+                opacity: 0.8;
+            }
+        }
+    }
+
+    .ivu-icon-ios-arrow-down {
+        transition: transform 0.2s ease-in-out;
+
+        &.open {
+            transform: rotateZ(180deg);
+        }
+    }
+
+    .common-topbar-dropdown {
+        position: absolute;
+        top: 0.6rem;
+        width: 100%;
+        background-color: #fff;
+        border-top: 1px solid rgb(0 0 0 / 7%);
+        box-shadow: 0 12px 10px 0 rgb(0 0 0 / 7%);
+        transition: height 0.2s cubic-bezier(0.215, 0.61, 0.355, 1),
+            opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+}

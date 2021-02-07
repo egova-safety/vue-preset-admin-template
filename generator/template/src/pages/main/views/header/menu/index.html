@@ -1,0 +1,25 @@
+<div class="u-qiuankun-u-menu" v-show="data.length">
+    <nav class="menu-left">
+        <span
+            v-for="(item,index) in data"
+            :key="index"
+            class="link-group"
+            :class="{'active': item.name === currentGroup.name}"
+            @mouseover="onMouseover(item)"
+        >
+            {{item.name}}
+        </span>
+    </nav>
+    <main class="menu-main">
+        <section class="links">
+            <template v-for="item in (currentGroup?.links || [])">
+                <a class="link" @click="goto(item)" title="当前窗口打开"
+                    >当前窗口打开:{{item.name}}</a
+                >
+                <a class="link" @click="goto(item, true)" title="新窗口打开"
+                    >新窗口打开:{{item.name}}</a
+                >
+            </template>
+        </section>
+    </main>
+</div>
