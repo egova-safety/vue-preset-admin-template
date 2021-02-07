@@ -4,43 +4,43 @@
     /* --------------------------------------------
   1、字体
   ---------------------------------------------*/
-    --text-color: #4d5867 !important; /*字体颜色*/
-    --text-color-1: #5e6572 !important; /*面包屑字体颜色*/
-    --text-color-2: #909399 !important; /*菜单颜色*/
+    --text-color: #4d5867; /*字体颜色*/
+    --text-color-1: #5e6572; /*面包屑字体颜色*/
+    --text-color-2: #909399; /*菜单颜色*/
 
-    --font-size-title-1: 0.2rem !important;
-    --font-size-title-2: 0.18rem !important;
-    --font-size-title-3: 0.16rem !important;
-    --font-size-title-4: 0.14rem !important;
-    --font-size-title-5: 0.12rem !important;
+    --font-size-title-1: 0.2rem;
+    --font-size-title-2: 0.18rem;
+    --font-size-title-3: 0.16rem;
+    --font-size-title-4: 0.14rem;
+    --font-size-title-5: 0.12rem;
     /* --------------------------------------------
   2、背景颜色
   ---------------------------------------------*/
-    --background-color: #fff !important; /*顶部栏背景色*/
-    --background-color-2: #fff !important; /*侧边栏菜单背景颜色*/
-    /* --background-color-3: rgb(240, 240, 240) !important; 侧边栏菜单hover时的背景颜色 */
-    --background-color-4: #f7f7f7 !important; /*主页面背景颜色页面*/
-    --background-color-5: #fff !important; /*页面组件背景*/
-    --background-color-6: #e8e8e8 !important; /*滚动条背景颜色*/
+    --background-color: #fff; /*顶部栏背景色*/
+    --background-color-2: #fff; /*侧边栏菜单背景颜色*/
+    /* --background-color-3: rgb(240, 240, 240) ; 侧边栏菜单hover时的背景颜色 */
+    --background-color-4: #f7f7f7; /*主页面背景颜色页面*/
+    --background-color-5: #fff; /*页面组件背景*/
+    --background-color-6: #e8e8e8; /*滚动条背景颜色*/
 
-    --background-color-7: #f8f8f9 !important; /*ivu-table 表头*/
+    --background-color-7: #f8f8f9; /*ivu-table 表头*/
     /* --------------------------------------------
   3、背景颜色 hover相关
   ---------------------------------------------*/
-    --background-hover-1: rgb(240, 240, 240) !important; /*侧边栏菜单hover时的背景颜色*/
-    --background-hover-2: #eaf3ff !important; /*ivu-table 行*/
+    --background-hover-1: rgb(240, 240, 240); /*侧边栏菜单hover时的背景颜色*/
+    --background-hover-2: #eaf3ff; /*ivu-table 行*/
     /* --------------------------------------------
   4、边框颜色
   ---------------------------------------------*/
-    --border-color: #ddd !important;
-    --border-color-1: #d8d8d8 !important; /*| 全局样式.ivu-select-border-g  | 全局样式.ivu-input-border-g  |*/
+    --border-color: #ddd;
+    --border-color-1: #d8d8d8; /*| 全局样式.ivu-select-border-g  | 全局样式.ivu-input-border-g  |*/
     /* --------------------------------------------
   5、边框阴影颜色
   ---------------------------------------------*/
-    --box-shadow-color: rgba(0, 0, 0, 0.1) !important;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
 
     /* --------------------------------------------
   6、字体图标
   ---------------------------------------------*/
-    --icon-color: #fff !important;
+    --icon-color: #fff;
 }

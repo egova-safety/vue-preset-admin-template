@@ -38,17 +38,22 @@ module.exports.hooks = (api, options) => {
                 ),
                 api.resolve("src")
             );
-            console.log();
             move(
                 api.resolve(`src/pages/${isSubModel ? "sub" : "main"}/main.ts`),
                 api.resolve("src")
             );
+            isSubModel &&
+                move(
+                    api.resolve(`src/pages/sub/routes/index.ts`),
+                    api.resolve(`src/routes`)
+                );
+            isSubModel &&
+                move(api.resolve("src/pages/sub/views"), api.resolve("src"));
             !isSubModel &&
                 move(api.resolve(`src/pages/main/views`), api.resolve("src"));
 
             // 编辑相关文件
             editCode(api, isSubModel);
-
             // 删除文件
             remove(api.resolve("src/pages"));
             if (isSubModel) {
@@ -93,27 +98,6 @@ function editCode(api, isSubModel) {
     fs.writeFileSync(api.resolve("vue.config.js"), vueConfig, {
         encoding: "utf-8"
     });
-
-    if (!isSubModel) return;
-
-    fs.readdirSync(api.resolve("public/static/skins")).forEach(item => {
-        //更新参数，递归调用
-        if (item.endsWith(".css")) {
-            let file = fs.readFileSync(
-                api.resolve(`public/static/skins/${item}`),
-                {
-                    encoding: "utf-8"
-                }
-            );
-            fs.writeFileSync(
-                api.resolve(`public/static/skins/${item}`),
-                file.replace(/!important;/g, ";"),
-                {
-                    encoding: "utf-8"
-                }
-            );
-        }
-    });
 }
 
 function copy(originalUrl, targetUrl) {
@@ -134,6 +118,11 @@ function copy(originalUrl, targetUrl) {
         // 如果原路径是文件
         if (STATUS.isFile()) {
             // 在新目录中创建同名文件，并将原文件内容追加到新文件中
+            // console.log(`write to ${targetUrl}/${fileName}`);
+            // 若目标文件夹不存在，则需要先创建文件夹
+            if (!fs.existsSync(`${targetUrl}`)) {
+                fs.mkdirSync(`${targetUrl}`);
+            }
             fs.writeFileSync(
                 `${targetUrl}/${fileName}`,
                 fs.readFileSync(originalUrl)

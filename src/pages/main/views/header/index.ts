@@ -47,7 +47,6 @@ export class HeaderComponent extends Component {
     }
 
     public onMouseover(item: string) {
-        console.log(`over ${item}`);
         if (item === this.currentMenuKey && this.currentMenu?.name) {
             return;
         }

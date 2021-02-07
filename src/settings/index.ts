@@ -11,3 +11,5 @@ export let commonSetting = {
     ...global.commonSetting
 };
 export const cachePageList = [];
+// 配置项目的rootSchemaId
+export const rootSchemaId = "";

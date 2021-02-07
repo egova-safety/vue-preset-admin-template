@@ -1,26 +1,62 @@
-
-export const demo = {
+export const index = {
     name: "index",
     path: "/index",
-    title: "index",
+    title: "导航1",
     meta: {
-        title: "index"
+        title: "导航1"
     },
-    redirect: "/index/welcome",
+    redirect: "/index/home",
     component: () => import("@/components/layout/main-wrapper/index"),
     children: [
         {
-            name: "index-about",
-            path: "about",
-            title: "关于",
+            name: "index-home",
+            path: "home",
+            title: "首页",
             meta: {
                 icon: "icon-home", // iconfont文件
-                title: "关于"
+                title: "菜单1",
+                isMenuGroup: false // 是否含二级菜单
             },
-            component: () => import("../views/index/about/index")
+            component: () => import("../views/index/welcome"),
+            children: []
         },
         {
-            name: "index-welcome",
+            name: "index-menu2",
+            path: "menu2",
+            title: "菜单2",
+            meta: {
+                icon: "icon-home", // iconfont文件
+                title: "菜单2",
+                isMenuGroup: true // 是否含二级菜单
+            },
+            component: () => import("@/components/layout/blank/index"),
+            children: [
+                {
+                    name: "index-menu2-1",
+                    path: "menu2.1",
+                    title: "菜单2.1",
+                    meta: {
+                        icon: "icon-home", // iconfont文件
+                        title: "菜单2.1"
+                    },
+                    component: () => import("../views/index/about")
+                }
+            ]
+        }
+    ]
+};
+export const demo = {
+    name: "demo-index",
+    path: "/demo",
+    title: "demo",
+    meta: {
+        title: "demo"
+    },
+    redirect: "/demo/welcome",
+    component: () => import("@/components/layout/main-wrapper/index"),
+    children: [
+        {
+            name: "demo-welcome",
             path: "welcome",
             title: "欢迎",
             meta: {
@@ -39,7 +75,7 @@ export const appRouter = {
     redirect: "/index",
     meta: {},
     component: () => import("@/components/layout"),
-    children: [demo]
+    children: [index, demo]
 };
 
 export const routes = [

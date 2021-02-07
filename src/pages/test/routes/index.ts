@@ -1,4 +1,3 @@
-
 export const demo = {
     name: "index",
     path: "/index",
@@ -10,16 +9,6 @@ export const demo = {
     component: () => import("@/components/layout/main-wrapper/index"),
     children: [
         {
-            name: "index-about",
-            path: "about",
-            title: "关于",
-            meta: {
-                icon: "icon-home", // iconfont文件
-                title: "关于"
-            },
-            component: () => import("../views/index/about/index")
-        },
-        {
             name: "index-welcome",
             path: "welcome",
             title: "欢迎",
@@ -28,6 +17,16 @@ export const demo = {
                 title: "欢迎"
             },
             component: () => import("../views/index/welcome/index")
+        },
+        {
+            name: "index-about",
+            path: "about",
+            title: "关于",
+            meta: {
+                icon: "icon-home", // iconfont文件
+                title: "关于"
+            },
+            component: () => import("../views/index/about/index")
         }
     ]
 };

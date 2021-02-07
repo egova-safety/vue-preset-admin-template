@@ -3,7 +3,6 @@ import { cachePageList, commonSetting } from "@/settings";
 import "./index.scss";
 import { PermissionUtil } from "@/common/utils/permission-util";
 import MenuComponent from "../../menu";
-import { appRouter } from "@/routes/index";
 @component({
     template: require("./index.html"),
     components: {
@@ -16,13 +15,15 @@ export default class MainWrapperView extends View {
         return commonSetting.__HIDE_SIDE_MENU;
     }
     public get menuList(): Array<any> {
+        const appRouter = ((<any>this.$router)?.options?.routes || []).find(
+            (v: any) => v.path === "/"
+        );
         const name = this.$route.matched[1]?.name;
         if (!name) return [];
         let routes = appRouter.children.find((v: any) => {
             return v.name === name;
         });
         let menu = PermissionUtil.handleMenuByPermissions(
-            this,
             routes?.children || []
         );
         menu = this.filterMenuList([], menu);
